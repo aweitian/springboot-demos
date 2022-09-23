@@ -6,7 +6,7 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 @Configuration
-public class RabbitMqGrowthConfig {
+public class RabbitMqConfig {
     //队列 起名：TestDirectQueue
     @Bean
     public Queue GondarDirectQueue() {
