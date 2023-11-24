@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    不同Mapper文件的namespace值应该保证唯一
+    在程序中通过[ namespace + id ]定位到要执行哪一条SQL语句
+ -->
+<mapper namespace="me.taw.mybatis.EmpMapper">
+
+    <select id="findAll" resultType="me.taw.mybatis.pojo.Emp">
+        select * from emp
+    </select>
+
+    <select id="findAllEx" resultType="me.taw.mybatis.pojo.Emp">
+        select emp.*,dept.name as dept from emp
+        left join dept on dept.id = emp.dept_id
+--         where emp.id in (10,11,16)
+    </select>
+</mapper>
