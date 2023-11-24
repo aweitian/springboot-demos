@@ -1,6 +1,7 @@
 package me.taw.mybatis;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import me.taw.mybatis.pojo.Emp;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -77,5 +78,7 @@ class MybatisApplicationTests {
         for(Emp e : list) {
             System.out.println( e );
         }
+        PageInfo page = new PageInfo(list);
+        System.out.println(page.getTotal());
     }
 }

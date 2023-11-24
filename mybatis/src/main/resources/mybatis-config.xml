@@ -2,6 +2,13 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties resource="db.properties"></properties>
+    <settings>
+        <setting name="cacheEnabled" value="true" />
+        <setting name="lazyLoadingEnabled" value="true" />
+<!--        <setting name="logImpl" value="LOG4J2" />-->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
     <!--
     plugins在配置文件中的位置必须符合要求，否则会报错，顺序如下:
     properties?, settings?,
@@ -17,6 +24,7 @@
             <property name="param1" value="value1"/>
         </plugin>
     </plugins>
+
     <!-- 1.配置环境，可配置多个环境（比如：develop开发、test测试） -->
     <environments default="develop">
         <environment id="develop">
@@ -32,15 +40,17 @@
                 UNPOOLED：不使用连接池
              -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="driver" value="${jdbc.driverClassName}"/>
 <!--                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
-                <property name="url" value="jdbc:mysql://localhost:3306/yonghedb?characterEncoding=utf-8"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
+
         </environment>
     </environments>
     <!-- 2.导入Mapper配置文件，如果mapper文件有多个，可以通过多个mapper标签导入 -->
+
     <mappers>
         <mapper resource="EmpMapper.xml"/>
     </mappers>
