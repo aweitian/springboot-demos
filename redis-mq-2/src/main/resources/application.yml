@@ -3,9 +3,12 @@ server:
 spring:
   redis:
     redisson:
-      file: classpath:redisson.yml
-    host: localhost # Redis服务器地址
-    database: 0 # Redis数据库索引（默认为0）
-    port: 6379 # Redis服务器连接端口
-    password: # Redis服务器连接密码（默认为空）
-    timeout: 300ms # 连接超时时间（毫秒）
+      # 如果该值为false，系统将不会创建RedissionClient的bean。
+      enabled: true
+      # mode的可用值为，single/cluster/sentinel/master-slave
+      mode: single
+      address: redis://127.0.0.1:6379
+      # redis 密码，空可以不填。
+      password:
+      database: 9
+
